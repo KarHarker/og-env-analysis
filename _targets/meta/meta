@@ -1,0 +1,100 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|iteration|parent|children|seconds|warnings|error
+pa_data|stem|de88382aaf7d4f5e|17ec38d30fc198a7|d0d383882b60fffa|1826686162||t18884.9845517182s|d72d1984f1993114|144235231|rds|vector|||445.98|GDAL Message 1 organizePolygons received a polygon with more than 100 parts. The processing may be really slow.  You can skip the processing by setting METHODSKIP, or only make it analyze counterclock wise parts by setting METHODONLY_CCW if you can assume that the outline of holes is counterclock wise defined|
+og_data|stem|f3e56b33583b00b2|07867b1300ba643d|3281be78ea78d181|-578589757||t18884.9853203422s|f35de4e3c3cc265a|16342124|rds|vector|||61.1||
+clean_pa|stem|3f81bcd2ac157c55|48967549cd99836a|2b5c53b67e959796|-740000161||t18884.9970928276s|e160334013354a3b|144890640|rds|vector|||738.23||
+og_ch|stem|482c2f2047d7bc9b|43c62e9dc87f1657|c759f6f7cb539862|-207587117||t18885.6457003849s|af230b57b002a102|45149056|rds|vector|||5849.62|attribute variables are assumed to be spatially constant throughout all geometries|
+watershed_data|stem|d588e329d7911c1a|65c0dc3535f202c8|69abaea2d611a4f8|1648837223||t18885.6807037262s|93511a0ff20b5b0f|1536417|rds|vector|||5.56||
+og_watershed|stem|4a441903508314cd|1e218c0d532fd71b|743d0ef57b85acf3|1836553319||t18885.6814807273s|95110f8a35a8b853|661431|rds|vector|||25.66|attribute variables are assumed to be spatially constant throughout all geometries|
+fix_ecoregions|function|555485713239163d||||||||||||||
+pa_tech|stem|90eddaaeb240c9fd|87bf5d348ef89112|0d4309d6388416c1|-1214097077||t18885.9789295702s|850e76ff1ace8a54|9274787|rds|vector|||57.42||
+bec_12|stem|5cfbe9f2fcf0020e|01f842e306ca77f4|cc9af87c052acb41|-861831858||t18885.9869573736s|8077e1f4d9c76aa5|11869891|rds|vector|||273.5|polygon from first part only|
+ch_data|stem|c6aa6a7542deffb4|047e38e171e65f92|a032c8de5e5eacc2|566363569||t18886.0038542072s|8608f51119ed5ea0|167886847|rds|vector|||1442.87|GDAL Message 1 organizePolygons received a polygon with more than 100 parts. The processing may be really slow.  You can skip the processing by setting METHODSKIP, or only make it analyze counterclock wise parts by setting METHODONLY_CCW if you can assume that the outline of holes is counterclock wise defined|
+pa_og_tech|stem|12cd654e958d0eca|99a2d2c5010f8e1d|0d515fd00b9604cf|-1110114098||t18886.0083434049s|faf691493725d401|6492252|rds|vector|||383.02|attribute variables are assumed to be spatially constant throughout all geometries|
+pa_og|stem|4cc85a4cc3cd2c1f|ec0b396c50ed78fe|7651a9aeaa027935|-1308727002||t18886.0176957428s|d447033aead44f3c|29619375|rds|vector|||802.13|attribute variables are assumed to be spatially constant throughout all geometries|
+og_watershed_area|stem||de4e12f26bdccab5|233cf5d9ba446d51|-1453607443||t18885.6915202377s||0|rds|vector|||2.39||Join columns must be present in data.31mx39m Problem with cw_name.
+bc_map|function|f7b83fc2f26734d0||||||||||||||
+measure_og_watershed_area|function|48e8985f894350cc||||||||||||||
+summarize_data|object|ac5c8a047e198193||||||||||||||
+write_csv_data|function|a2ea0951c311f6a4||||||||||||||
+plot_ch_og_data|function|3a28c6d26530c4c3||||||||||||||
+get_cpcad_bc_data|function|0815733dedef50b1||||||||||||||
+remove_pa|function|d7c578ac9efa323b||||||||||||||
+fill_in_dates|function|f7a122a94972835c||||||||||||||
+measure_og_ch_habitat|function|44d13d857b06110b||||||||||||||
+protected_area_load|function|fc37daa8ed7d04a1||||||||||||||
+overall_pa_og|function|f264f261a509491d||||||||||||||
+group_pa_eco_bec_to_multi|function|16187a44482d15cf||||||||||||||
+intersect_data|object|bde144ad789e327c||||||||||||||
+group_pa_bec_to_multi|function|e254e3e1c913ae40||||||||||||||
+process_data|object|47428655e1272c1b||||||||||||||
+eco_bar|function|67ba1970a9b77f19||||||||||||||
+plot_bec_zone_totals|function|848627adef25c4eb||||||||||||||
+plot_community_watersheds|function|3097028cef08b8ba||||||||||||||
+.Random.seed|object|aca5dd3d832fa10a||||||||||||||
+ch_data_load|function|595c4ede05366e70||||||||||||||
+threshold_scenario|function|cb7f803cc2056e40||||||||||||||
+group_eco_bec_to_multi|function|a11a6f1871c878b7||||||||||||||
+clean_data|object|7a9450c5b6469f4f||||||||||||||
+clean_up_dates|function|797657bf093d691e||||||||||||||
+simplify_ecoregions|function|eff118c0091d6241||||||||||||||
+eco_static|function|267d80e2fc43c084||||||||||||||
+bec_data_load|function|0fb4837835ba0ae5||||||||||||||
+create_bc_button|function|22c2d46210b85a45||||||||||||||
+protected_area_by_bec_eco|function|7e1147e49ccf76da||||||||||||||
+protected_area_by_eco|function|65818c4cd1d573e0||||||||||||||
+overall_pa_og_tech|function|95f7cb3b2afe5b25||||||||||||||
+intersect_pa|function|01313a4db13bc7d6||||||||||||||
+clip_to_bc_boundary|function|c0b280c0c8d4049a||||||||||||||
+load_datasets|object|b258fbe7f8c2ff2f||||||||||||||
+remove_overlaps|function|7ba58778f66a70cc||||||||||||||
+get_water_licenses|function|ff8ef2e105eb7ef8||||||||||||||
+overall_og_ch_habitat|function|15fb389d4e35d658||||||||||||||
+plot_by_bec_zone|function|bcfc0b12902cbea8||||||||||||||
+overall_og|function|69d405ea12076d07||||||||||||||
+simplify_background_map|function|fa350e374ed3be00||||||||||||||
+get_com_watersheds|function|2dee3ef001563b47||||||||||||||
+og_load|function|3d9ec332010fb44c||||||||||||||
+scenario_output|function|2f935873f2401e32||||||||||||||
+bc_map|function|f7b83fc2f26734d0
+measure_og_watershed_area|function|42637fcd74241310
+summarize_data|object|22aa7e43a0dff428
+write_csv_data|function|a2ea0951c311f6a4
+plot_ch_og_data|function|3a28c6d26530c4c3
+get_cpcad_bc_data|function|0815733dedef50b1
+remove_pa|function|d7c578ac9efa323b
+fill_in_dates|function|f7a122a94972835c
+measure_og_ch_habitat|function|44d13d857b06110b
+protected_area_load|function|fc37daa8ed7d04a1
+overall_pa_og|function|f264f261a509491d
+group_pa_eco_bec_to_multi|function|16187a44482d15cf
+intersect_data|object|174ee4c9ef991770
+group_pa_bec_to_multi|function|e254e3e1c913ae40
+eco_bar|function|67ba1970a9b77f19
+plot_bec_zone_totals|function|848627adef25c4eb
+plot_community_watersheds|function|3097028cef08b8ba
+.Random.seed|object|07afe559b6d2317b
+ch_data_load|function|595c4ede05366e70
+threshold_scenario|function|cb7f803cc2056e40
+group_eco_bec_to_multi|function|a11a6f1871c878b7
+clean_data|object|7a9450c5b6469f4f
+clean_up_dates|function|797657bf093d691e
+simplify_ecoregions|function|eff118c0091d6241
+eco_static|function|267d80e2fc43c084
+bec_data_load|function|0fb4837835ba0ae5
+create_bc_button|function|22c2d46210b85a45
+protected_area_by_bec_eco|function|7e1147e49ccf76da
+protected_area_by_eco|function|65818c4cd1d573e0
+overall_pa_og_tech|function|95f7cb3b2afe5b25
+intersect_pa|function|01313a4db13bc7d6
+clip_to_bc_boundary|function|c0b280c0c8d4049a
+load_datasets|object|b258fbe7f8c2ff2f
+remove_overlaps|function|7ba58778f66a70cc
+get_water_licenses|function|ff8ef2e105eb7ef8
+overall_og_ch_habitat|function|15fb389d4e35d658
+plot_by_bec_zone|function|bcfc0b12902cbea8
+overall_og|function|69d405ea12076d07
+simplify_background_map|function|fa350e374ed3be00
+get_com_watersheds|function|2dee3ef001563b47
+og_load|function|3d9ec332010fb44c
+scenario_output|function|2f935873f2401e32
+prot_watershed|stem|20f62e21ea21474e|8e0611ed90f854a3|c0d101025d18fb15|506559908||t18886.7151107904s|1aa588d7e5151c32|308846|rds|vector|||10.28|attribute variables are assumed to be spatially constant throughout all geometries|
