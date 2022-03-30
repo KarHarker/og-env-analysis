@@ -94,15 +94,24 @@ du9_des <- des_lands_du9 %>%
   mutate(caribou_area_des = st_area(.),
          caribou_area_des = as.numeric(set_units(caribou_area_des, ha))) %>%
   st_drop_geometry() %>%
+  group_by(herd, critical_habitat_type, priority_zone_type) %>%
   summarise(total_area_des = sum(caribou_area_des))
 
-du9_sums <- cbind(du9_area, du9_pa, du9_uwr, du9_des, du9_all_og, du9_all_og_pa, du9_all_og_des,
-                  du9_priority_og, du9_priority_og_pa, du9_priority_og_des)
+du9_sums <- du9_area %>%
+  left_join(du9_pa, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  #left_join(du9_uwr, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_des, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_all_og, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_all_og_pa, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_all_og_des, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_priority_og, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_priority_og_pa, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_priority_og_des, by = c('herd', 'critical_habitat_type', 'priority_zone_type'))
 
 #area sums
 du9_sum <- du9_sums %>%
-  mutate(area_no_conservation = du9omp_area - total_area_des,
-         area_outside_parks = du9omp_area - ppa)
+  mutate(area_no_conservation = du9_area - total_area_des,
+         area_outside_parks = du9_area - ppa)
 
 du9_des <- des_lands_du9 %>%
   mutate(caribou_area_des = st_area(.),
@@ -115,10 +124,15 @@ du9_des_summary_flat <- des_lands_du9 %>%
   mutate(proposed_cons_area= st_area(.),
          proposed_cons_area = as.numeric(set_units(proposed_cons_area, ha))) %>%
   st_drop_geometry() %>%
-  group_by(designations) %>%
+  group_by(designations, herd, critical_habitat_type, priority_zone_type) %>%
   summarise(des_area_type = sum(proposed_cons_area)) %>%
   ungroup() %>%
-  mutate(des_area_all = sum(des_area_type))
+  group_by(herd, critical_habitat_type) %>%
+  mutate(des_area_hab_type = sum(des_area_type)) %>%
+  ungroup() %>%
+  group_by(herd) %>%
+  mutate(des_area_herd = sum(des_area_type)) %>%
+  arrange(designations, herd, desc(des_area_type))
 #write_sf(des_lands_du9_vis, "out/des_lands_du9_vis.gpkg")
 write_csv(du9_des_summary_flat, "out/des_lands_flat_du9.csv")
 
@@ -127,24 +141,44 @@ du9_des_summary_overlapping <- des_lands_du9_vis %>%
   mutate(proposed_cons_area= st_area(.),
          proposed_cons_area = as.numeric(set_units(proposed_cons_area, ha))) %>%
   st_drop_geometry() %>%
-  group_by(designation) %>%
-  summarise(des_area_type = sum(proposed_cons_area))
+  group_by(designation, herd, critical_habitat_type, priority_zone_type) %>%
+  summarise(des_area_type = sum(proposed_cons_area)) %>%
+  ungroup() %>%
+  group_by(herd, critical_habitat_type) %>%
+  mutate(des_area_hab_type = sum(des_area_type)) %>%
+  ungroup() %>%
+  group_by(herd) %>%
+  mutate(des_area_herd = sum(des_area_type)) %>%
+  arrange(designation, herd, desc(des_area_type))
 write_csv(du9_des_summary_overlapping, "out/des_lands_overlapping_du9.csv")
 
 
-
-du9_og<-cbind(du9_priority_og, du9_priority_og_pa, du9_priority_og_des, du9_priority_og_uwr, du9_all_og, du9_all_og_pa,
-              du9_all_og_uwr, du9_all_og_uwr, du9_area)
+du9_og <- du9_area %>%
+  left_join(du9_pa, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  #left_join(du9_uwr, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_des, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_all_og, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_all_og_pa, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_all_og_des, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_priority_og, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_priority_og_pa, by = c('herd', 'critical_habitat_type', 'priority_zone_type')) %>%
+  left_join(du9_priority_og_des, by = c('herd', 'critical_habitat_type', 'priority_zone_type'))
 
 du9_summary_og <- du9_og %>%
-  mutate(priority_unprotected_og = og_priority_area - og_priority_pa_area - og_priority_uwr_area,
-         all_unprotected_og = all_og_area-all_og_pa_area-all_uwr_area,
-         perc_priority_unprot = priority_unprotected_og/og_priority_area*100,
-         perc_all_unprot = all_unprotected_og/all_og_area*100)
+  mutate(priority_unprotected_og = og_priority_area - og_priority_pa_area - (og_priority_des_area-og_priority_pa_area),
+         all_unprotected_og = all_og_area-all_og_pa_area-(all_og_des_area-all_og_pa_area),
+         perc_priority_unprot = round(priority_unprotected_og/og_priority_area*100, digits=0),
+         perc_all_unprot = round(all_unprotected_og/all_og_area*100, digits=1))
 #unprot_area = caribou_area - ppa - oecm,
 #priority_no_des = og_priority_area - og_des_area,
 #non_des_area = caribou_area - ppa - oecm -caribou_area_des,
 #perc_unprot = non_des_area/caribou_area*100)
+
+write_csv(du9_summary_og, "out/old-growth-summary_du9.csv")
+
+
+########################################################################################################
+
 
 pa_du9 <- pa_du9 %>%
   mutate(pa_area= st_area(.),

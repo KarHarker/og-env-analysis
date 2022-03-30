@@ -15,10 +15,10 @@
 
 og_load <- function(){
 
-og <- st_read("og-data/ShapeFile/Overlay_of_Maps123_2021_08_10.shp", crs=3005) %>%
-  st_make_valid() %>%
-  st_cast(to = "POLYGON", warn = FALSE)
-og
+  og <- st_read("og-data/ShapeFile/Map8_OldGrowthTreeSize_2021_10_30.shp", crs=3005) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  og
 
 }
 
@@ -152,18 +152,13 @@ lup_boundaries <- function(){
   lup
 }
 
-priority_og_oct <- function(){
-  og <- st_read("data/og-oct-13/Shapefile/OGmapP1_2021_10_05.shp", crs=3005) %>%
-    rename_all(tolower) %>%
-    st_make_valid() %>%
-    st_cast(to = "POLYGON", warn = FALSE)
-}
 
-priority_mod_og <- function(){
-  og <- st_read("data/og-oct-25/Map1_PriorityDeferral_2021_10_24.shp", crs=3005) %>%
+priority_og <- function(){
+  og <- st_read("og-data/ShapeFile/Map1_PriorityDeferral_2021_10_24.shp", crs=3005) %>%
     rename_all(tolower) %>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
+  og
 }
 
 woodlands <- function(){

@@ -39,7 +39,7 @@ load_datasets <- list(
   tar_target(fn_communities, fn_load()),
   tar_target(population, pop_load()),
   tar_target(lup_data, lup_boundaries()),
-  tar_target(priority_og, priority_og_oct()), #new og area
+  tar_target(priority_og, priority_og()), #new og area
   tar_target(woodland_area, woodlands()), #woodland area tech panel
   tar_target(caribou_cons_area, caribou_area()),
   tar_target(des_lands, designated_lands()),
@@ -51,7 +51,7 @@ load_datasets <- list(
   tar_target(land_tenure, land_tenures()),
   tar_target(eao_points, eao_data()),
   tar_target(forestry_tenures, forest_tenure()),
-  tar_target(priority_oct25, priority_mod_og()),
+  tar_target(priority_oct25, priority_og()),
   tar_target(caribou_gcr_herd, caribou_herds()),
   tar_target(harv_auth, harvest_authority()),
   tar_target(heat_map, heat_map_26()),
@@ -298,11 +298,15 @@ site_based_analysis_du9 <- list(
   tar_target(pa_du9, intersect_pa(du9, clean_pa)),
   tar_target(des_lands_du9, intersect_pa(du9, des_lands)),
   tar_target(des_lands_du9_vis, intersect_pa(du9, des_lands_vis)),
+
+  # priority og
   tar_target(priority_og_du9, intersect_pa(du9, priority_oct25)),
   tar_target(priority_og_pa_du9, intersect_pa(priority_og_du9, pa_du9)),
   tar_target(priority_og_des_du9, intersect_pa(priority_og_du9, des_lands_du9)),
   tar_target(priority_og_des_vis_du9, intersect_pa(des_lands_du9_vis, priority_og_du9)),
   #tar_target(priority_og_smc_pa_env, intersect_pa(priority_og_smc, clean_pa)),
+
+  # all og
   tar_target(og_du9, intersect_pa(du9, og_data)),
   tar_target(og_pa_du9, intersect_pa(og_du9, pa_du9)),
   tar_target(og_des_lands_du9, intersect_pa(des_lands_du9, og_du9)),
@@ -339,13 +343,13 @@ process_data <- list(
 list(
   load_datasets,
   clean_data,
-  intersect_data,
+  #intersect_data,
   #round_2_analyses,
-  round_3_analyses,
-  site_based_analyses,
-  site_based_analyses_incomp,
-  site_based_analysis_du9,
-  process_data
+  #round_3_analyses,
+  #site_based_analyses,
+  #site_based_analyses_incomp,
+  site_based_analysis_du9
+  #process_data
   #summarize_data
   #analyze_data,
   #plot_data,
