@@ -434,3 +434,64 @@ gcr_caribou <- caribou_gcr_herd %>%
          prot_area_gcr_uwr = herd_area_remaining_uwr/herd_area_gcr*100)
 
 write_csv(gcr_caribou, "out/gcr_caribou_herd_summary_Proposed.csv")
+
+
+# PIP areas
+
+tar_load(c(pip_gcr, pip_full_herd, pip))
+
+gcr_pip_summary <- pip_gcr %>%
+  mutate(pip_area = st_area(.),
+         pip_area = as.numeric(set_units(pip_area, ha))) %>%
+  st_drop_geometry() %>%
+  group_by(CONTACT_ORGANIZATION_NAME, CNSLTN_AREA_NAME) %>%
+  summarise(area = sum(pip_area))
+
+du9_pip_summary <- pip_full_herd %>%
+  mutate(pip_area = st_area(.),
+         pip_area = as.numeric(set_units(pip_area, ha))) %>%
+  st_drop_geometry() %>%
+  group_by(CONTACT_ORGANIZATION_NAME, CNSLTN_AREA_NAME) %>%
+  summarise(area = sum(pip_area))
+
+all_pip_summary <- pip %>%
+  mutate(pip_area = st_area(.),
+         pip_area = as.numeric(set_units(pip_area, ha))) %>%
+  st_drop_geometry() %>%
+  group_by(CONTACT_ORGANIZATION_NAME, CNSLTN_AREA_NAME) %>%
+  summarise(all_pip_area = sum(pip_area))
+
+pip_areas <- st_read("out/pip_gcr.gpkg", crs=3005) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE) %>%
+  mutate(pip_area_total = st_area(.),
+         pip_area_total = as.numeric(set_units(pip_area_total, ha))) %>%
+  st_drop_geometry() %>%
+  group_by(CONTACT_ORGANIZATION_NAME, CNSLTN_AREA_NAME) %>%
+  summarise(total_pip_area = sum(pip_area_total)) %>%
+
+gcr_pip_sum <- gcr_pip_summary %>%
+  left_join(all_pip_summary) %>%
+  mutate(perc_in_gcr = round(area/all_pip_area*100, digits=2))
+
+write_csv(gcr_pip_sum, "out/gcr_pip_summary.csv")
+
+tar_load(c(cut_og, cut_og_pa))
+
+cut_og_sum <- cut_og %>%
+  mutate(og_area = st_area(.),
+         og_area = as.numeric(set_units(og_area, ha))) %>%
+  st_drop_geometry() %>%
+  filter(LIFE_CYCLE_STATUS_CODE != "RETIRED") %>%
+  group_by(LIFE_CYCLE_STATUS_CODE) %>%
+  summarise(all_og_area = sum(og_area))
+
+cut_og_pa_sum <- cut_og_pa %>%
+  mutate(og_pa_area = st_area(.),
+         og_pa_area = as.numeric(set_units(og_pa_area, ha))) %>%
+  st_drop_geometry() %>%
+  filter(LIFE_CYCLE_STATUS_CODE != "RETIRED") %>%
+  group_by(LIFE_CYCLE_STATUS_CODE) %>%
+  summarise(all_og_pa_area = sum(og_pa_area)) %>%
+  left_join(cut_og_sum, by = "LIFE_CYCLE_STATUS_CODE") %>%
+  mutate(unprot = all_og_area - all_og_pa_area)
