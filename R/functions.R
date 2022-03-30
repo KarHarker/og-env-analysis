@@ -175,7 +175,7 @@ woodlands <- function(){
 }
 
 caribou_area <- function(){
-  output <- st_read("data/Caribou_Rainforest_Conservation_Area.shp", crs=3005) %>%
+  output <- st_read("data/gcr_boundary_nov-10.gpkg", crs=3005) %>%
     rename_all(tolower) %>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
@@ -310,7 +310,76 @@ pip_areas<- function(){
   area
 }
 
+incom <- function(){
+  incom <- st_read("data/Incomappleux_boundary_July2021.shp",
+                 crs=3005) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  incom
+}
 
+fish <- function(){
+  fish <- st_read("data/Fish_River_AOI.shp",
+                   crs=3005) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  fish
+}
+
+fish_10 <- function(){
+  fish <- st_read("data/fr_boundary.gpkg",
+                  crs=3005) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  fish
+}
+
+fish_5 <- function(){
+  fish <- st_read("out/fish_river_5_km.gpkg",
+                  crs=3005) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  fish
+}
+
+tfl <- function(){
+  tfl <- bcdc_get_data("WHSE_ADMIN_BOUNDARIES.FADM_TFL_ALL_SP")%>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  tfl
+}
+
+og_all <- function(){
+  og <- st_read("data/og-all/Map8_OldGrowthTreeSize_2021_10_30.shp", crs=3005) %>%
+    rename_all(tolower) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+}
+
+seymour_wshed <- function(){
+  wshed <- st_read("data/SeymourRiverWatershed.shp", crs=3005) %>%
+    rename_all(tolower) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  wshed
+}
+
+du9_area <- function(){
+  c_ch <- st_read("data/SME_SCENARIO_FOOTPRINT.gdb", layer='SME_SCENARIO_FOOTPRINT', crs=3005)
+
+  c_ch <- c_ch %>%
+    rename_all(tolower) %>%
+    mutate(priority_zone_type = case_when(priority_zone_type == "" ~ "Other",
+                                          TRUE ~ as.character(priority_zone_type))) %>%
+    st_cast(to = "MULTIPOLYGON", warn = FALSE) %>%
+    st_make_valid() %>%
+    st_cast(to="POLYGON", warn = FALSE) %>%
+    mutate(caribou_area = st_area(.),
+           caribou_area = as.numeric(set_units(caribou_area, ha))) %>%
+    select(-c(priority_stand_type, shape_length, shape_area))
+
+  c_ch
+}
 # Intersections with wha and ogma data to add dates -----------------------------------------
 
 fill_in_dates <- function(data, column, join, landtype, output){

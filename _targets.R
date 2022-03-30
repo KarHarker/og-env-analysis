@@ -58,7 +58,14 @@ load_datasets <- list(
   tar_target(future_cons, ralcp()),
   tar_target(caribou_full_herd, caribou_full()),
   tar_target(y2y, y2y_area()),
-  tar_target(pip, pip_areas())
+  tar_target(pip, pip_areas()),
+  tar_target(incomp_area, incom()),
+  tar_target(fish_area, fish()),
+  tar_target(fish_10_buff, fish_10()),
+  tar_target(fish_5_buff, fish_5()),
+  tar_target(tfl_area, tfl()),
+  tar_target(og, og_all()),
+  tar_target(du9, du9_area())
 )
 
 clean_data <- list(
@@ -209,8 +216,109 @@ site_based_analyses <- list(
   tar_target(full_herd_y2y, intersect_pa(caribou_full_herd, y2y)),
 
   tar_target(pip_gcr, intersect_pa(pip, caribou_cons_area)),
-  tar_target(pip_full_herd, intersect_pa(pip, caribou_full_herd))
+  tar_target(pip_full_herd, intersect_pa(pip, caribou_full_herd)),
+  tar_target(cut_og, intersect_pa(priority_og_smc, smc_forest)),
+  tar_target(cut_og_pa, intersect_pa(priority_og_pa_smc, smc_forest))
 )
+
+site_based_analyses_incomp <- list(
+  tar_target(pa_inc, intersect_pa(incomp_area, clean_pa)),
+  tar_target(des_lands_inc, intersect_pa(incomp_area, des_lands)),
+  tar_target(des_lands_inc_vis, intersect_pa(incomp_area, des_lands_vis)),
+  tar_target(priority_og_inc, intersect_pa(incomp_area, priority_oct25)),
+  tar_target(priority_og_pa_inc, intersect_pa(priority_og_inc, pa_inc)),
+  tar_target(priority_og_des_inc, intersect_pa(priority_og_inc, des_lands_inc)),
+  tar_target(priority_og_des_vis_inc, intersect_pa(des_lands_inc_vis, priority_og_inc)),
+  #tar_target(priority_og_smc_pa_env, intersect_pa(priority_og_smc, clean_pa)),
+  tar_target(og_inc, intersect_pa(incomp_area, og_data)),
+  tar_target(og_pa_inc, intersect_pa(og_inc, pa_inc)),
+  tar_target(og_des_lands_inc, intersect_pa(des_lands_inc, og_inc)),
+  tar_target(og_des_lands_vis_inc, intersect_pa(des_lands_inc_vis, og_smc)),
+  #tar_target(og_pa_smc, intersect_pa(og_smc, clean_pa)),
+  tar_target(inc_forest, intersect_pa(incomp_area, forest_ten)),
+  tar_target(inc_mine_active, intersect_pa(incomp_area, mining_active)),
+  tar_target(inc_mine_potential, intersect_pa(incomp_area, mining_tenure)),
+  tar_target(inc_land, intersect_pa(incomp_area, land_tenure)),
+  tar_target(inc_eao, intersect_point_to_poly(incomp_area, eao_points)),
+  tar_target(inc_tenures, intersect_pa(incomp_area, forestry_tenures)),
+  tar_target(inc_harv, intersect_pa(incomp_area, harv_auth)),
+  tar_target(inc_ch, intersect_pa(incomp_area, ch_data)),
+  tar_target(inc_ch_des, intersect_pa(inc_ch, des_lands_inc)),
+
+  #
+  tar_target(inc_y2y, intersect_pa(incomp_area, y2y)),
+  tar_target(pip_inc, intersect_pa(pip, incomp_area)),
+   ## FISH RIVER
+  tar_target(pa_fish, intersect_pa(fish_area, clean_pa)),
+  tar_target(des_lands_fish, intersect_pa(fish_area, des_lands)),
+  tar_target(des_lands_fish_vis, intersect_pa(fish_area, des_lands_vis)),
+  tar_target(priority_og_fish, intersect_pa(fish_area, priority_oct25)),
+  tar_target(priority_og_pa_fish, intersect_pa(priority_og_fish, pa_fish)),
+  tar_target(priority_og_des_fish, intersect_pa(priority_og_fish, des_lands_fish)),
+  tar_target(priority_og_des_vis_fish, intersect_pa(des_lands_fish_vis, priority_og_fish)),
+  #tar_target(priority_og_smc_pa_env, intersect_pa(priority_og_smc, clean_pa)),
+  tar_target(og_fish, intersect_pa(fish_area, og_data)),
+  tar_target(og_pa_fish, intersect_pa(og_fish, pa_fish)),
+  tar_target(og_des_lands_fish, intersect_pa(des_lands_fish, og_fish)),
+  tar_target(og_des_lands_vis_fish, intersect_pa(des_lands_fish_vis, og_smc)),
+  #tar_target(og_pa_smc, intersect_pa(og_smc, clean_pa)),
+  tar_target(fish_forest, intersect_pa(fish_area, forest_ten)),
+  tar_target(fish_mine_active, intersect_pa(fish_area, mining_active)),
+  tar_target(fish_mine_potential, intersect_pa(fish_area, mining_tenure)),
+  tar_target(fish_land, intersect_pa(fish_area, land_tenure)),
+  tar_target(fish_eao, intersect_point_to_poly(fish_area, eao_points)),
+  tar_target(fish_tenures, intersect_pa(fish_area, forestry_tenures)),
+  tar_target(fish_harv, intersect_pa(fish_area, harv_auth)),
+  tar_target(fish_tfl, intersect_pa(fish_area, tfl_area)),
+  #
+  tar_target(fish_y2y, intersect_pa(fish_area, y2y)),
+  tar_target(pip_fish, intersect_pa(pip, fish_area)),
+  tar_target(fish_ch, intersect_pa(ch_data, fish_area)),
+  tar_target(fish_ch_des, intersect_pa(fish_ch, des_lands_fish)),
+
+  #
+  tar_target(des_lands_fish_5, intersect_pa(fish_5_buff, des_lands)),
+  tar_target(des_lands_fish_5_vis, intersect_pa(fish_5_buff, des_lands_vis)),
+  #
+  tar_target(fish_forest_10, intersect_pa(fish_10_buff, forest_ten)),
+  tar_target(fish_mine_active_10, intersect_pa(fish_10_buff, mining_active)),
+  tar_target(fish_mine_potential_10, intersect_pa(fish_10_buff, mining_tenure)),
+  tar_target(fish_land_10, intersect_pa(fish_10_buff, land_tenure)),
+  tar_target(fish_eao_10, intersect_point_to_poly(fish_10_buff, eao_points)),
+  tar_target(fish_tenures_10, intersect_pa(fish_10_buff, forestry_tenures)),
+  tar_target(fish_harv_10, intersect_pa(fish_10_buff, harv_auth)),
+  tar_target(fish_tfl_10, intersect_pa(fish_10_buff, tfl_area)),
+  tar_target(fish_ch_10, intersect_pa(fish_10_buff, ch_data)),
+  tar_target(fish_des_10, intersect_pa(fish_10_buff, des_lands)),
+  tar_target(fish_des_vis_10, intersect_pa(fish_10_buff, des_lands_vis)),
+  tar_target(fish_pa_10, intersect_pa(fish_10_buff, clean_pa))
+)
+
+site_based_analysis_du9 <- list(
+  tar_target(pa_du9, intersect_pa(du9, clean_pa)),
+  tar_target(des_lands_du9, intersect_pa(du9, des_lands)),
+  tar_target(des_lands_du9_vis, intersect_pa(du9, des_lands_vis)),
+  tar_target(priority_og_du9, intersect_pa(du9, priority_oct25)),
+  tar_target(priority_og_pa_du9, intersect_pa(priority_og_du9, pa_du9)),
+  tar_target(priority_og_des_du9, intersect_pa(priority_og_du9, des_lands_du9)),
+  tar_target(priority_og_des_vis_du9, intersect_pa(des_lands_du9_vis, priority_og_du9)),
+  #tar_target(priority_og_smc_pa_env, intersect_pa(priority_og_smc, clean_pa)),
+  tar_target(og_du9, intersect_pa(du9, og_data)),
+  tar_target(og_pa_du9, intersect_pa(og_du9, pa_du9)),
+  tar_target(og_des_lands_du9, intersect_pa(des_lands_du9, og_du9)),
+  tar_target(og_des_lands_vis_du9, intersect_pa(des_lands_du9_vis, og_smc)),
+  #tar_target(og_pa_smc, intersect_pa(og_smc, clean_pa)),
+  tar_target(du9_forest, intersect_pa(du9, forest_ten)),
+  tar_target(du9_mine_active, intersect_pa(du9, mining_active)),
+  tar_target(du9_mine_potential, intersect_pa(du9, mining_tenure)),
+  tar_target(du9_land, intersect_pa(du9, land_tenure)),
+  tar_target(du9_eao, intersect_point_to_poly(du9, eao_points)),
+  tar_target(du9_tenures, intersect_pa(du9, forestry_tenures)),
+  tar_target(du9_harv, intersect_pa(du9, harv_auth)),
+  tar_target(du9_ch, intersect_pa(du9, ch_data)),
+  tar_target(du9_ch_des, intersect_pa(du9_ch, des_lands_du9))
+)
+
 
 process_data <- list(
   #tar_target(og_parks_removed, remove_pa(og_data, pa_tech)),
@@ -235,6 +343,8 @@ list(
   #round_2_analyses,
   round_3_analyses,
   site_based_analyses,
+  site_based_analyses_incomp,
+  site_based_analysis_du9,
   process_data
   #summarize_data
   #analyze_data,
