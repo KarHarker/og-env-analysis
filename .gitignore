@@ -5,3 +5,16 @@
 .Rdata
 .httr-oauth
 .DS_Store
+*.gpkg*
+*.csv
+og-data/*
+data/*
+*.gdb/
+*.docx
+*.shp
+BEI_BC_V211*
+_targets/objects/*
+*.txt
+*.qgz
+*ne_out/
+*out/
