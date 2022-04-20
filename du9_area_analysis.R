@@ -1,3 +1,6 @@
+source('packages.R')
+conflict_prefer("filter", "dplyr")
+
 tar_load(c(priority_og_du9, priority_og_pa_du9, du9omp_area, priority_og_des_du9, pa_du9,
            priority_og_des_vis_du9, og_du9, og_pa_du9, og_des_lands_du9, og_des_lands_vis_du9,
            du9_ch, du9_ch_pa, des_lands_du9,
@@ -119,12 +122,16 @@ du9_des <- des_lands_du9 %>%
   summarise(total_area_des = sum(caribou_area_des))
 write_sf(du9_des, "out/des_lands_du9_all.gpkg")
 
+des_info_flat <- read_csv("designations-unique-flat.csv") %>%
+  rename(designations = designation)
+
 #Table 2 - summarize the type and area of conservation area (individually)
 du9_des_summary_flat <- des_lands_du9 %>%
   mutate(proposed_cons_area= st_area(.),
          proposed_cons_area = as.numeric(set_units(proposed_cons_area, ha))) %>%
   st_drop_geometry() %>%
-  group_by(designations, herd, critical_habitat_type, priority_zone_type) %>%
+  group_by(designations, herd, critical_habitat_type, priority_zone_type, forest_restriction_max,
+           mine_restriction_max, og_restriction_max) %>%
   summarise(des_area_type = sum(proposed_cons_area)) %>%
   ungroup() %>%
   group_by(herd, critical_habitat_type) %>%
@@ -132,7 +139,8 @@ du9_des_summary_flat <- des_lands_du9 %>%
   ungroup() %>%
   group_by(herd) %>%
   mutate(des_area_herd = sum(des_area_type)) %>%
-  arrange(designations, herd, desc(des_area_type))
+  arrange(designations, herd, desc(des_area_type)) %>%
+  left_join(des_info_flat, by = "designations")
 #write_sf(des_lands_du9_vis, "out/des_lands_du9_vis.gpkg")
 write_csv(du9_des_summary_flat, "out/des_lands_flat_du9.csv")
 
@@ -174,8 +182,19 @@ du9_summary_og <- du9_og %>%
 #non_des_area = caribou_area - ppa - oecm -caribou_area_des,
 #perc_unprot = non_des_area/caribou_area*100)
 
-write_csv(du9_summary_og, "out/old-growth-summary_du9.csv")
+order = c("High", "Medium", "Low", "Other")
 
+du9_summary_og_output <- du9_summary_og %>%
+  select(-c(oecm, ppa, total_area_des, all_og_des_area, og_priority_des_area)) %>%
+  relocate(all_unprotected_og, .after=all_og_pa_area) %>%
+  relocate(perc_all_unprot,  .after=all_unprotected_og) %>%
+  mutate(across(where(is.numeric), round, 0),
+    priority_zone_type = factor(priority_zone_type, levels=order)) %>%
+  arrange(herd, critical_habitat_type, priority_zone_type) %>%
+  select(-c(all_og_pa_area, og_priority_pa_area)) %>%
+  mutate(across(where(is.numeric), ~replace_na(.x, 0)))
+
+write_csv(du9_summary_og_output, "out/old-growth-summary_du9.csv")
 
 ########################################################################################################
 

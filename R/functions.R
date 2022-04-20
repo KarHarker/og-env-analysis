@@ -276,7 +276,8 @@ heat_map_26 <- function(){
 }
 
 ralcp <- function(){
-  ralcp <- st_read("data/CONFIDENTIAL_Draft_Master_RALCP_Do_Not_Share_Nov-3.gdb", layer='RALCP_Projects', crs=3005) %>%
+  ralcp <- st_read("data/CONFIDENTIAL_Draft_MasterAreasOfConservationInterest_Apr5.gdb",
+                   layer='Areas_of_Conservation_Interest_Projects', crs=3005) %>%
     rename_all(tolower) %>%
     st_cast(to = "MULTIPOLYGON", warn = FALSE) %>%
     st_make_valid() %>%
