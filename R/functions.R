@@ -75,6 +75,22 @@ ch_data_flat <- function(){
 
 }
 
+cef <- function(){
+  cef_data <- st_read("data/BCCE_Watershed_Assmnt_Results_2018_20201015.gdb",
+                      layer='CEF_AQUATICS_ASSESSMT_POLY_2018_20201015', crs=3005)
+
+  cef_list <- readRDS("wshed_list.RDS")
+
+  cef_area <- cef_data %>%
+    rename_all(tolower) %>%
+    filter(assessment_unit_source_id %in% cef_list) %>%
+    st_cast(to = "MULTIPOLYGON", warn = FALSE) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  cef_area
+
+}
+
 get_com_watersheds<- function(){
   c_water<-bcdc_get_data("WHSE_WATER_MANAGEMENT.WLS_COMMUNITY_WS_PUB_SVW")%>%
     rename_all(tolower) %>%
@@ -206,33 +222,33 @@ pa_tech_simp <- function(data){
 }
 
 forest_cutblock <- function(){
-  forestry_data <- bcdc_get_data("WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW")%>%
+  forestry_cutblock_data <- bcdc_get_data("WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW")%>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
-  forestry_data
+  forestry_cutblock_data
 }
 
 
 harvest_authority <- function(){
-  harv_auth <- bcdc_get_data("WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW")%>%
+  harv_auth_current <- bcdc_get_data("WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW")%>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
-  harv_auth
+  harv_auth_current
 }
 
 active_min_data <- function(){
-  mining_data <- bcdc_get_data("WHSE_MINERAL_TENURE.HSP_MJR_MINES_PERMTTD_AREAS_SP")%>%
+  mining_data_current <- bcdc_get_data("WHSE_MINERAL_TENURE.HSP_MJR_MINES_PERMTTD_AREAS_SP")%>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
-  mining_data
+  mining_data_current
 }
 
 potential_min_data <- function(){
-  mining_tenures <- st_read("data/BCGW_7113060B_1635183826695_2660/MTA_ACQUIRED_TENURE_GOV_SVW/MTAACQTENG_polygon.shp",
+  mining_tenures_current <- st_read("data/BCGW_7113060B_1635183826695_2660/MTA_ACQUIRED_TENURE_GOV_SVW/MTAACQTENG_polygon.shp",
                             crs=3005) %>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
-  mining_tenures
+  mining_tenures_current
 }
 
 land_tenures <- function(){
@@ -345,11 +361,29 @@ tfl <- function(){
   tfl
 }
 
+tsa <- function(){
+  tsa <- bcdc_get_data("WHSE_ADMIN_BOUNDARIES.FADM_TSA")%>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  tsa
+}
+
+
+
 og_all <- function(){
   og <- st_read("data/og-all/Map8_OldGrowthTreeSize_2021_10_30.shp", crs=3005) %>%
     rename_all(tolower) %>%
     st_make_valid() %>%
     st_cast(to = "POLYGON", warn = FALSE)
+}
+
+
+og_5 <- function(){
+  og_5 <- st_read("og-data/ShapeFile/Overlay_of_Maps123_2021_08_10.shp", crs=3005) %>%
+    rename_all(tolower) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  og_5
 }
 
 seymour_wshed <- function(){
@@ -376,6 +410,24 @@ du9_area <- function(){
 
   c_ch
 }
+
+cdc <- function(){
+  cdc_data <- bcdc_get_data("WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW")%>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  cdc_data
+}
+
+th_wma <- function(){
+  wma <- st_read("data/ThompsonNewWMAs.shp", crs=3005) %>%
+    rename_all(tolower) %>%
+    st_make_valid() %>%
+    st_cast(to = "POLYGON", warn = FALSE)
+  wma
+}
+
+
+
 # Intersections with wha and ogma data to add dates -----------------------------------------
 
 fill_in_dates <- function(data, column, join, landtype, output){

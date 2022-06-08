@@ -92,10 +92,7 @@ og_ch_flat|stem|7d987fdfbb343301|741e3689bb21356a|0e408aff2e9e1996|781780783||t1
 priority_og_ch_flat|stem|ad6c994357a9d63c|5c21c9792d24c32a|5246b41703490f4f|655470704||t18925.2128004498s|adbaf502e73aed5c|19631828|rds|vector|||1108.8|attribute variables are assumed to be spatially constant throughout all geometries|
 priority_og_ch_flat_prot|stem|ee70b09d27bd3575|c80792fb816c9bd5|feb5226e5556912e|-1955318277||t18925.2183585973s|01cf59e5816f91fc|8368222|rds|vector|||478.19|attribute variables are assumed to be spatially constant throughout all geometries|
 og_ch_flat_prot|stem|d437b25c9fdef621|3b5956b6dc1dd400|fb171a4ee88ba31a|399298897||t18925.2195892264s|d0757d3230ad482a|16448366|rds|vector|||103.03|attribute variables are assumed to be spatially constant throughout all geometries|
-forest_ten|stem|cc7e22b6898e35c8|a17535c2724e6888|a06708144688d1d8|-1468626046||t18925.7261305905s|d8650ccc42e7c6cc|539501468|rds|vector|||1731.26||
-mining_active|stem|5359c526b9cf0296|c7ee8bb431adf1c1|efaa5c239d7bb0dd|-699294208||t18925.7261866949s|8bdc8f177ef6a80a|1925193|rds|vector|||3.56||
 land_tenure|stem|f687c4d436989a0a|ab864085fae73e25|2c8ecec95a9503b5|690876811||t18925.7546937508s|b32e9d24eadc180c|125610951|rds|vector|||223.05||
-mining_tenure|stem|1387b2d4466e5fdc|c9c68cc0f73c040a|82358dfe6f7e8888|1833576210||t18925.7547800816s|10ff79553f1aa155|10601815|rds|vector|||5.93|polygon from first part only|
 eao_points|stem|08f4c787a7e0ee0f|20f7eedf0d803743|d42c2ab5211310a5|762963633||t18925.8554142373s|96cf821340660f75|47576|rds|vector|||0.16||
 forestry_tenures|stem|5ad982d41851a1df|3ac00e2c74a631a9|a70b8971ad7868c3|897825554||t18925.8598541355s|48d91ee85e34bee0|11356500|rds|vector|||16.54||
 int_wet|function|987e2f3175eb8b98||||||||||||||
@@ -105,7 +102,6 @@ int_wet_belt_itr|stem|91439a4f209c1fc4|0787b6ad4e1ac79a|fb7c2f22017ea70f|-118469
 int_wet_belt|stem|6a78b46d7462dd29|db17d4e8c0ade6d9|b458264ee426ec78|1530789080||t18926.7787627639s|337171db199a03f2|25977294|rds|vector|||0.03||
 smc_c_area|stem|5dbb2f8aefb14f7d|b3d5b0c972deefce|a8da7b4c1286dd69|1281251731||t18926.9013784484s|da42a0e31a31b6dc|3085337|rds|vector|||11.91|attribute variables are assumed to be spatially constant throughout all geometries|
 c_area|stem|bd0aa2c583b01996|6f77afe99870052c|fd7af3011e55db4e|-1755134344||t18927.764476193s|14adb2659d82f751|9798781|rds|vector|||3.62||
-harv_auth|stem|eda8f39e50cc7546|996ff8899061564a|3965361e5d7e0d54|-355478215||t18928.7443019965s|af83a9efa6ef4f82|544479888|rds|vector|||793.11||
 priority_og_watershed|stem|610c8cbeaf62d0a4|81144c8ca5fcaa13|65b5574ef6c22385|-422356524||t18932.6521345569s|5ed49528ac4422db|545422|rds|vector|||22.22|attribute variables are assumed to be spatially constant throughout all geometries|
 priority_prot_watershed|stem|5b02df2deddaa089|df811fd245174872|15cbb4f20ef67db4|-126972666||t18932.6522380481s|bde0ac6fa2ec1698|246950|rds|vector|||7.89|attribute variables are assumed to be spatially constant throughout all geometries|
 caribou_gcr_herd|stem|bd0aa2c583b01996|6f77afe99870052c|fd7af3011e55db4e|-1130015601||t18933.7271679667s|14adb2659d82f751|9798781|rds|vector|||2.75||
@@ -229,29 +225,59 @@ cut_og_pa|stem|94a34eee5a68102e|02ed0dedc28d3f73|fbe69a24e20d3354|-864333941||t1
 priority_og_oct|function|097475678e4736e4||||||||||||||
 priority_mod_og|function|be972aad2e94b744||||||||||||||
 du9|stem|cd2d416a3335b525|ac7679c8c9c20021|f3538715192ac90f|1303276790||t19081.7616045247s|32d677649e9c951d|23421840|rds|vector|||181.06|polygon from first part only|
-du9_mine_active|stem|3748c8c3c5769c02|6adc142af4de1e9e|642b2bbc30ffc790|1603438757||t19081.7616390482s|987bd9fa8886973f|134315|rds|vector|||2.59|attribute variables are assumed to be spatially constant throughout all geometries|
 des_lands_du9|stem|77076649a252f938|69b20bdd7feac25b|0b3a7a69abe5097a|872216748||t19081.7721576154s|78e4e0343a25f321|37425825|rds|vector|||879.2|attribute variables are assumed to be spatially constant throughout all geometries|
-du9_forest|stem|2c8949b187f7f3b7|2eff499561b592ba|7739ab0f7e288819|-1569290430||t19081.7743299637s|82715bf0d3c0be65|44070664|rds|vector|||174.92|attribute variables are assumed to be spatially constant throughout all geometries|
 des_lands_du9_vis|stem|fcfbb3bbeed29357|1ea18a97e95c2fe7|ec0bcea5fdd3bdfe|-398057496||t19081.7791943834s|8330148d2cfcd169|37734369|rds|vector|||282.22|attribute variables are assumed to be spatially constant throughout all geometries|
-du9_harv|stem|62b1791689e6b901|6edbbe661b772e52|eac4a7e05ddf3773|35405431||t19081.7824559152s|9e3f033b27fff5dd|56003090|rds|vector|||265.79|attribute variables are assumed to be spatially constant throughout all geometries|
 du9_tenures|stem|70c0c337d8925d4a|ec126b827c0f6bcc|bff36761628f95d3|-446212192||t19081.7825175699s|34ccbcaeb16b0f2c|986222|rds|vector|||4.97|attribute variables are assumed to be spatially constant throughout all geometries|
 du9_ch|stem|84c350e3fbbb82be|006092369e9610fc|a0e83254ec853ba6|-421024522||t19081.794732726s|d9afd544e22110c6|32654507|rds|vector|||875.23|attribute variables are assumed to be spatially constant throughout all geometries|
-du9_mine_potential|stem|554ed4c524625bbb|b846cdc5bb3abd25|ed93d09e9ce4137d|2138987879||t19081.7950843409s|55523abe9ea598cd|8203098|rds|vector|||28.67|attribute variables are assumed to be spatially constant throughout all geometries|
 du9_land|stem|6a172387c6c4930f|938729410151d669|8c99445bc34c9cf4|-1442614697||t19081.7970038871s|91fd6de761c84454|41176641|rds|vector|||159.62|attribute variables are assumed to be spatially constant throughout all geometries|
 du9_eao|stem|0c1a785c09c88418|96d71a7a6d6356ba|eff6a1d3cd0e2b03|891483766||t19081.7970339802s|0d38f861a173b4e1|3211|rds|vector|||2.46|attribute variables are assumed to be spatially constant throughout all geometries|
-priority_og_des_du9|stem|294f5bcd5567dd80|35d79d3c24aaf57b|b8a140e51191f2fb|1343834197||t19081.7973709043s|a7fbfe94356d9722|5257810|rds|vector|||28.05|attribute variables are assumed to be spatially constant throughout all geometries|
-priority_og_des_vis_du9|stem|5686b2d9706d3c66|be743ec9a52823d5|3b59d43dc06b981a|-1602225530||t19081.797696305s|6c426377a409e408|4542867|rds|vector|||27.29|attribute variables are assumed to be spatially constant throughout all geometries|
-du9_ch_des|stem|f1ee2fceafca9fbb|712e6df3bde77ca8|21b546ac0fd15ffa|-171664924||t19081.8061803267s|8f23a06acb1d853f|37081074|rds|vector|||684.14|attribute variables are assumed to be spatially constant throughout all geometries|
 pa_du9|stem|13d4e2273dd21717|06213e5648fd7e21|73436751f0d33f75|1322482570||t19081.8064369489s|4dd873445433b17c|6494551|rds|vector|||19.84|attribute variables are assumed to be spatially constant throughout all geometries|
-priority_og_pa_du9|stem|b21691395eab3fbc|a8787d7cf38bef92|d46a1383d19ae0b5|-1629388584||t19081.8066081223s|6377a5d87d9c5ccd|1029067|rds|vector|||5.04|attribute variables are assumed to be spatially constant throughout all geometries|
-og_pa_du9|stem|b4c36414c4c7e898|12542852d550ac80|0a1111253cff8e67|1819882213||t19081.8067122792s|d7f3b8f45858d547|1476344|rds|vector|||8.75|attribute variables are assumed to be spatially constant throughout all geometries|
 priority_og|stem|216a1bff460f17ba|d541b1a8a1424cb1|ef46db3751d8e999|-1458745623||t19081.9035386735s|8d00ec86b49ef6c5|9796987|rds|vector|||31.94||
 og_data|stem|7f3e4e9dbdc3b8d3|07867b1300ba643d|913b65b8287dc712|-578589757||t19081.904674758s|ba09bf3d9d28514a|34443449|rds|vector|||87.74||
 priority_oct25|stem|216a1bff460f17ba|d541b1a8a1424cb1|f9434d96258fcd8a|-1218871757||t19081.9050477627s|8d00ec86b49ef6c5|9796987|rds|vector|||29||
-og_du9|stem|7dfa7b7c30e94269|44526eea58ca9574|0f2f971852837914|102104744||t19081.90743715s|452653eb1ce3bf86|5665161|rds|vector|||205.18|attribute variables are assumed to be spatially constant throughout all geometries|
 priority_og_du9|stem|bc71d54140211526|aed2e232884c5c62|c4a3a40e5934eeed|623268264||t19081.9089462494s|a110cea1aec7d923|3858473|rds|vector|||129.75|attribute variables are assumed to be spatially constant throughout all geometries|
-og_des_lands_du9|stem|e1ad8f0035d12e37|615514d238449d9d|070afbb325346d43|-1256131743||t19081.9094530947s|d4ef6104025651b1|6925293|rds|vector|||41.28|attribute variables are assumed to be spatially constant throughout all geometries|
-og_des_lands_vis_du9|stem|fc13f25470576690|e094fad1e942d29d|b5ffcd5def7498eb|-1961249955||t19081.8065448531s||937168|rds|vector|||3.63||object og_smc not found
+future_cons|stem|4a99ee60552c28b4|b15b9fe5368586e1|06284d46b1611796|-122140585||t19102.851005079s|176764bcb0e5f165|1295790|rds|vector|||13.68|polygon from first part only|
+priority_og_pa_du9|stem|f111be118a7d9a58|a8787d7cf38bef92|0171ca29f14a88a3|-1629388584||t19102.8564909677s|9af8278c6e7fd806|1029094|rds|vector|||4.21|attribute variables are assumed to be spatially constant throughout all geometries|
+priority_og_des_vis_du9|stem|025ce823651ecc90|be743ec9a52823d5|3544b675e392fe0d|-1602225530||t19102.856793237s|81bceb31ea1d8429|4542869|rds|vector|||25.36|attribute variables are assumed to be spatially constant throughout all geometries|
+priority_og_des_du9|stem|99d0530ac2b530ef|35d79d3c24aaf57b|0a64681a33c41579|1343834197||t19102.8571409647s|2c866ae38564b99a|5257906|rds|vector|||28.14|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_ch_des|stem|92196d9e6901e79b|609f6693413d45ee|57bee89d7efb7743|-171664924||t19102.9328739081s|fa30d41b75c57c00|36050154|rds|vector|||5355.69|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_ch_pa|stem|d443fa9d4466fe45|f6a58483dbfb766d|cad9be3d9f8fa0b5|-1413186567||t19102.9345164746s|6376180c8a060d73|5625203|rds|vector|||140.98|attribute variables are assumed to be spatially constant throughout all geometries|
+forest_ten|stem|55ba0beac44734eb|a17535c2724e6888|d3d4d9f7f11f748e|-1468626046||t19103.9986920419s|66b9831b22bdef3c|547933392|rds|vector|||1523.55||
+harv_auth|stem|a614f3c82a2ab159|996ff8899061564a|a3ddb6641c692287|-355478215||t19104.7134483856s|b6bf1ca23d16fb9e|552758892|rds|vector|||1306.75||
+mining_active|stem|04f14aa94e579f82|c7ee8bb431adf1c1|1994ec071d43961e|-699294208||t19104.7134978512s|4a85dcf541fa8fb0|2129284|rds|vector|||3.16||
+mining_tenure|stem|5369a841dc8d565b|c9c68cc0f73c040a|f18ca3de3940b503|1833576210||t19104.7135882751s|52b66e61340084f1|10602041|rds|vector|||6.51|polygon from first part only|
+du9_forest|stem|4e1ee586e34d7d59|2eff499561b592ba|ce4d410447babb75|-1569290430||t19104.7157583988s|12d20f0237f61c4c|44889521|rds|vector|||174.1|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_harv|stem|028bafea4706b9a9|6edbbe661b772e52|4461561b45ab9ef3|35405431||t19104.7183837167s|b42fccea316c94c8|56713752|rds|vector|||220.17|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_mine_active|stem|7623607210134a81|6adc142af4de1e9e|10a79d1d872cdc4a|1603438757||t19104.7184144794s|1aaaacd37a58658a|130589|rds|vector|||2.51|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_mine_potential|stem|554ed4c524625bbb|b846cdc5bb3abd25|5c737a80bc8a5bc1|2138987879||t19104.7187118457s|55523abe9ea598cd|8203098|rds|vector|||24.78|attribute variables are assumed to be spatially constant throughout all geometries|
+cdc_load|stem|13129358da0534a2|e8574cfff3bb02b3|10b6308b9075c36c|64873699||t19143.8748392706s|863730247036af3a|40160113|rds|vector|||93.13||
+du9_cdc|stem|82933debea0c496b|66c2daba225d886c|87bb2f946e7dc497|93069914||t19143.8751877864s|b1a484bce257417c|17844319|rds|vector|||27.41|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_cdc_pa|stem|65ac11c2261b7adc|8d01c989cd7b24ec|68fc852bece2195e|1649006109||t19143.875268966s|ebb4aa0120e0a852|2859073|rds|vector|||6.41|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_ch_flat|stem|705037fb1d6d6200|50e99f5158e0a320|93c850351a10305c|778308199||t19144.7858173868s|07a7ddaab8d4bfcd|23052065|rds|vector|||288.64|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_ch_flat_pa|stem|d86c5c9fd7fc7c78|5564020a18bef09f|ee544d99da2d8a68|-1972755824||t19144.7866626166s|06e232efea2f8193|4402375|rds|vector|||72.33|attribute variables are assumed to be spatially constant throughout all geometries|
+og_du9|stem|7dfa7b7c30e94269|8d17d244db394875|6c662881ba12965b|102104744||t19144.8720947291s|452653eb1ce3bf86|5665161|rds|vector|||185.22|attribute variables are assumed to be spatially constant throughout all geometries|
+og_des_lands_du9|stem|e1ad8f0035d12e37|615514d238449d9d|070afbb325346d43|-1256131743||t19144.8725588372s|d4ef6104025651b1|6925293|rds|vector|||37.69|attribute variables are assumed to be spatially constant throughout all geometries|
+og_des_lands_vis_du9|stem|0ac4d29c182c6a60|feee1915c9844412|ad201095d7d8882b|-1961249955||t19144.8730274877s|5f8c5f055c97cb34|6257250|rds|vector|||38.61|attribute variables are assumed to be spatially constant throughout all geometries|
+og_pa_du9|stem|6df90651c728be9b|12542852d550ac80|faa54afec9950358|1819882213||t19144.8731027079s|4a7b67deca9a8d3f|1392865|rds|vector|||6.08|attribute variables are assumed to be spatially constant throughout all geometries|
+tsa_area|stem|8295087b39786f8e|e9b7cb9cb82cdece|9c5232bfab220c63|-665836956||t19146.7591040922s|ab072d0f9efee086|86250288|rds|vector|||127.79||
+priority_du9_tfl|stem|e73e01e594dc7233|803f1fed574eba8b|7fc076bee75b4b25|-425898881||t19146.7592336181s|d6f361bc93759681|521094|rds|vector|||10.61|attribute variables are assumed to be spatially constant throughout all geometries|
+priority_du9_tsa|stem|c3e513f13bc5cc41|c57a196e979b1978|93bc4836d45b4888|1907839937||t19146.7645468036s|e49ebbccb7814d26|7623068|rds|vector|||457.94|attribute variables are assumed to be spatially constant throughout all geometries|
+priority_du9_tfl_pa|stem|c66f6d75d3c28ec4|009b8df8f4ec1823|66930a1d8f7eb077|1747337358||t19146.7645620962s|92434a94aa300dab|188390|rds|vector|||1.2|attribute variables are assumed to be spatially constant throughout all geometries|
+priority_du9_tsa_pa|stem|e395cf2bbfa825f3|00fd9774ba61d196|f64418101e2c606a|1158992112||t19146.7653928887s|14f62221c56abb82|1924507|rds|vector|||71.48|attribute variables are assumed to be spatially constant throughout all geometries|
+og_5_data|stem|7871deb4a14a9151|4a96c252570e935a|d087d29feb80daae|-453829335||t19150.8832716276s|ab57a1f70b8c95c0|16327659|rds|vector|||62.24||
+og_5_du9|stem|9b8f3d4679c7ef15|295593fa0cfd12f2|d2229ab9bcba9e82|510159646||t19150.885217626s|4e819a90f9ad9f46|6033638|rds|vector|||166.62|attribute variables are assumed to be spatially constant throughout all geometries|
+og_5_pa_du9|stem|94ac48691c660be2|efc05fbb3d7ab087|a947e84e4ebb1196|45977338||t19150.8854896647s|e8dd497f88dd6548|1439645|rds|vector|||23|attribute variables are assumed to be spatially constant throughout all geometries|
+og_5_du9_tsa|stem|8d868f28bc67387f|24210d6040e3180d|887ec79ac3cd4db4|-679763014||t19150.9887477964s|1773e811de6b1b81|11925071|rds|vector|||701.22|attribute variables are assumed to be spatially constant throughout all geometries|
+og_5_du9_tfl|stem|06e9059564a99582|77d3da8ef8b72fb6|76a593086e862ed4|-1130305887||t19150.9889274671s|17243f2962196dae|868291|rds|vector|||15.31|attribute variables are assumed to be spatially constant throughout all geometries|
+og_5_du9_tsa_pa|stem|968af5f6f1dd728d|608605efd0a5c002|47fe77123911a058|-1704921372||t19150.9898926894s|b1a34a92825dec1b|2684560|rds|vector|||82.89|attribute variables are assumed to be spatially constant throughout all geometries|
+og_5_du9_tfl_pa|stem|7ce73e131c29b481|5b896d9f994eb3dd|392e9c41f5c9f077|836513033||t19150.9899084147s|4efaa2b4414a9842|299849|rds|vector|||1.31|attribute variables are assumed to be spatially constant throughout all geometries|
+cef_data|stem|cd810ca1279f4994|36bea736575f7a85|d8be8fb45f29a5be|1893407741||t19151.7737489555s|a413bf33f98c6055|16522827|rds|vector|||7.67|polygon from first part only|
+du9_tfl|stem|6bf9e5a4b6f3676f|b770c00c0e060098|272e81b6b17479f3|-1579953779||t19151.7738068364s|f4eac9e026e53433|2947445|rds|vector|||4.46|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_tsa|stem|47630d8e7e36c4c7|da581b4cc86414ea|9b2e96be1ac79f98|2137357256||t19151.7744466555s|5f9560d1efe0395c|45995849|rds|vector|||50.15|attribute variables are assumed to be spatially constant throughout all geometries|
+du9_cef|stem|cf993b15d7c84672|9530df55ec89697e|5ca97377809437da|1509213050||t19151.774856984s|212e3d19bac4dd04|34849142|rds|vector|||31.04|attribute variables are assumed to be spatially constant throughout all geometries|
+th_wma_data|stem|dabc58dabfb3b76c|4bb78733c4363852|117d0d79742f79c2|-1320436626||t19151.8913729356s|b0d350472c8cedba|21917|rds|vector|||0.36||
+wma_og|stem|07a33ff7f300021b|6b76b406fccadb45|1922392f0eaae43e|518221962||t19151.9095751946s|2f0c3fc06132828d|53254|rds|vector|||34.71|attribute variables are assumed to be spatially constant throughout all geometries|
+wma_ch|stem|05659d0e05ffca57|ec023d8a7fc164bd|1e8d1ce40f473d7b|-1270678092||t19151.9189667112s|12e1b439d3eddbc9|983990|rds|vector|||19.09|attribute variables are assumed to be spatially constant throughout all geometries|
 measure_og_watershed_area|function|002205f17c0ae67d||||||||||||||
 designated_lands|function|6bb4d73b51334cd9||||||||||||||
 ch_data_agg|function|7c3ed1879fd9cf70||||||||||||||
@@ -260,17 +286,19 @@ remove_pa|function|411a7d399a8f9d57||||||||||||||
 overall_og_ch_habitat|function|19029a561267a220||||||||||||||
 intersect_data|object|b3a52398dd5c2c7e||||||||||||||
 bc_map|function|f7b83fc2f26734d0||||||||||||||
-forest_cutblock|function|8eebe4b8a6ae2e51||||||||||||||
+forest_cutblock|function|2bb6e47e46eacfb2||||||||||||||
 fish_10|function|1c3be1c6b4135f55||||||||||||||
 caribou_herds|function|6d48d42053ec8ed6||||||||||||||
 scenario_output|function|2f935873f2401e32||||||||||||||
 designated_lands_vis|function|ee72c7c511df0da2||||||||||||||
 intersect_pa|function|01313a4db13bc7d6||||||||||||||
+cef|function|d82a4be2a562ac0e||||||||||||||
 get_com_watersheds|function|2dee3ef001563b47||||||||||||||
 tfl|function|5f251db93245f0d0||||||||||||||
 plot_bec_zone_totals|function|848627adef25c4eb||||||||||||||
 round_2_analyses|object|ed7cf0cb2b8d968e||||||||||||||
 overall_pa_og|function|f264f261a509491d||||||||||||||
+th_wma|function|d76a08607add6d29||||||||||||||
 forest_tenure|function|9000cc6321ccc0c7||||||||||||||
 int_tran|function|fd46982c0cfde488||||||||||||||
 caribou_area|function|df714a6987902eaf||||||||||||||
@@ -278,11 +306,11 @@ int_iwb|function|3cc91db754b45324||||||||||||||
 clip_to_bc_boundary|function|c0b280c0c8d4049a||||||||||||||
 plot_by_bec_zone|function|bcfc0b12902cbea8||||||||||||||
 write_csv_data|function|a2ea0951c311f6a4||||||||||||||
-ralcp|function|c91063de04aaf8a2||||||||||||||
-site_based_analysis_du9|object|789702004e5a865b||||||||||||||
+ralcp|function|82d597463cb248a7||||||||||||||
+site_based_analysis_du9|object|7bf7206d76c7fe89||||||||||||||
 create_bc_button|function|22c2d46210b85a45||||||||||||||
 get_cpcad_bc_data|function|0815733dedef50b1||||||||||||||
-active_min_data|function|310910fa0f1d2327||||||||||||||
+active_min_data|function|224b5b7a3e58921c||||||||||||||
 overall_og_dependent_ch_habitat|function|917cc3becfd226ef||||||||||||||
 load_and_combine|function|b96feb6bdaf716bc||||||||||||||
 eco_static|function|267d80e2fc43c084||||||||||||||
@@ -304,6 +332,7 @@ bec_data_load|function|a7812c840e61b81d||||||||||||||
 group_eco_bec_to_multi|function|a11a6f1871c878b7||||||||||||||
 plot_ch_og_dependent|function|6137a20b3b1a70ad||||||||||||||
 eco_bar|function|67ba1970a9b77f19||||||||||||||
+tsa|function|e91ffd5c699713f8||||||||||||||
 fish_5|function|ecacb3c284b95182||||||||||||||
 lup_boundaries|function|5ad5a0b08b80e759||||||||||||||
 ch_data_flat|function|fb0250b93d1ba51b||||||||||||||
@@ -322,7 +351,7 @@ pa_by_type|function|621e3c2b6089f340||||||||||||||
 df_leading|function|9404f120d1ce3a87||||||||||||||
 og_load|function|1f2c2e1f49c1320c||||||||||||||
 bgc_at_risk|function|5a7f089afe3d2f00||||||||||||||
-potential_min_data|function|1eebde152ea2ae9b||||||||||||||
+potential_min_data|function|22687165cac24200||||||||||||||
 incom|function|fb5fef01bb84fb50||||||||||||||
 site_based_analyses_incomp|object|26db4e5eb38bb03a||||||||||||||
 measure_og_ch_habitat|function|6088c30cf7a159c9||||||||||||||
@@ -330,15 +359,16 @@ plot_community_watersheds|function|3097028cef08b8ba||||||||||||||
 round_3_analyses|object|8d62d85ca66143a6||||||||||||||
 spatial_join|function|9927e0ca78dc6f0f||||||||||||||
 threshold_scenario|function|cb7f803cc2056e40||||||||||||||
-load_datasets|object|15eea3362870a087||||||||||||||
+load_datasets|object|2d579219b93aae93||||||||||||||
 woodlands|function|826afd883486b166||||||||||||||
 fish|function|bd8bc552ddbb2c39||||||||||||||
 measure_og_dependent_ch_habitat|function|bba5ded982b83afc||||||||||||||
 pa_tech_simp|function|39be3d693be0e9a2||||||||||||||
 fill_in_dates|function|f7a122a94972835c||||||||||||||
 merge_areas|function|4e53f3dd635441f5||||||||||||||
+cdc|function|16a1202fe48f7727||||||||||||||
 filter_og_dependent|function|def21a9b15eb398e||||||||||||||
-.Random.seed|object|bc212966061fe09c||||||||||||||
+.Random.seed|object|58af60174cf9ed65||||||||||||||
 int_wet_all|function|e0dd1f477f9761d4||||||||||||||
 carbon_analysis_coastal|function|fbf549071bfffbac||||||||||||||
 carbon_analysis_interior|function|e547d3a157cf08a9||||||||||||||
@@ -346,8 +376,11 @@ site_based_analyses|object|62f6027e9488c26c||||||||||||||
 water_license_analysis|function|94edd2f6d97553e5||||||||||||||
 protected_area_load|function|fc37daa8ed7d04a1||||||||||||||
 intersect_point_to_poly|function|892e60f748a3be4a||||||||||||||
-harvest_authority|function|bf76deabea9a6601||||||||||||||
 clean_up_dates|function|797657bf093d691e||||||||||||||
+harvest_authority|function|21d5a8a1f6169fd4||||||||||||||
+wma_analysis|object|b19c1ad88ee2d570||||||||||||||
 seymour_wshed|function|958c3c82ff4630f1||||||||||||||
+og_5|function|0113c7c8bf11e153||||||||||||||
 du9_area|function|46b9c0ee7c9b592c||||||||||||||
-future_cons|stem|226a0e95d396a4a8|b15b9fe5368586e1|550d107513fedbf6|-122140585||t18936.0154137747s||1424392|rds|vector|||0.12||Opening layer failed.
+wma_lup|stem|164384806651171e|6dc8de22ca320a31|3506865df93e40c4|-540547224||t19151.9253736076s|39bd756449c5b640|14222|rds|vector|||2.11|x is already of type POLYGON.|
+wma_des|stem|926e237b8a454c86|10f668fc3f2985e0|45af0ea8d1a6a7e7|-234128240||t19151.9270412898s|d220edb53a2e80f7|1502767|rds|vector|||118.16|attribute variables are assumed to be spatially constant throughout all geometries|

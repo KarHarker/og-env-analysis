@@ -27,9 +27,9 @@ conflict_prefer("filter", "dplyr")
 # load datasets ------------------------------------------------------------------------------------
 
 load_datasets <- list(
-  tar_target(og_data, og_load()),
-  tar_target(pa_data, get_cpcad_bc_data()),
-  tar_target(ch_data, ch_data_load()),
+  tar_target(og_data, og_load()), #at risk priority old growth
+  tar_target(pa_data, get_cpcad_bc_data()), # ppa and oecm
+  tar_target(ch_data, ch_data_load()), #ch data
   tar_target(watershed_data, get_com_watersheds()),
   tar_target(pa_tech, protected_area_load()),
   tar_target(bec_12, bec_data_load()),
@@ -44,7 +44,7 @@ load_datasets <- list(
   tar_target(caribou_cons_area, caribou_area()),
   tar_target(des_lands, designated_lands()),
   tar_target(des_lands_vis, designated_lands_vis()),
-  tar_target(ch_flat, ch_data_flat()),
+  tar_target(ch_flat, ch_data_flat()), # critical habitat flat
   tar_target(forest_ten, forest_cutblock()),
   tar_target(mining_active, active_min_data()),
   tar_target(mining_tenure, potential_min_data()),
@@ -65,7 +65,12 @@ load_datasets <- list(
   tar_target(fish_5_buff, fish_5()),
   tar_target(tfl_area, tfl()),
   tar_target(og, og_all()),
-  tar_target(du9, du9_area())
+  tar_target(du9, du9_area()),
+  tar_target(cdc_load, cdc()),
+  tar_target(cef_data, cef()),
+  tar_target(tsa_area, tsa()),
+  tar_target(og_5_data, og_5()),
+  tar_target(th_wma_data, th_wma())
 )
 
 clean_data <- list(
@@ -112,7 +117,6 @@ intersect_data <- list(
 )
 
 round_2_analyses<- list(
-  #####
   ##### old layers
   #tar_target(faib_og_extra, load_and_combine()),
   #tar_target(faib_og_layer, intersect_pa(pa_og_tech, priority_og)),
@@ -307,10 +311,14 @@ site_based_analysis_du9 <- list(
   #tar_target(priority_og_smc_pa_env, intersect_pa(priority_og_smc, clean_pa)),
 
   # all og
-  tar_target(og_du9, intersect_pa(du9, og_data)),
+  tar_target(og_du9, intersect_pa(du9, og)),
   tar_target(og_pa_du9, intersect_pa(og_du9, pa_du9)),
   tar_target(og_des_lands_du9, intersect_pa(des_lands_du9, og_du9)),
-  tar_target(og_des_lands_vis_du9, intersect_pa(des_lands_du9_vis, og_smc)),
+  tar_target(og_des_lands_vis_du9, intersect_pa(des_lands_du9_vis, og_du9)),
+
+  tar_target(og_5_du9, intersect_pa(du9, og_5_data)),
+  tar_target(og_5_pa_du9, intersect_pa(og_5_data, pa_du9)),
+
   #tar_target(og_pa_smc, intersect_pa(og_smc, clean_pa)),
   tar_target(du9_forest, intersect_pa(du9, forest_ten)),
   tar_target(du9_mine_active, intersect_pa(du9, mining_active)),
@@ -320,7 +328,40 @@ site_based_analysis_du9 <- list(
   tar_target(du9_tenures, intersect_pa(du9, forestry_tenures)),
   tar_target(du9_harv, intersect_pa(du9, harv_auth)),
   tar_target(du9_ch, intersect_pa(du9, ch_data)),
-  tar_target(du9_ch_des, intersect_pa(du9_ch, des_lands_du9))
+  tar_target(du9_ch_des, intersect_pa(ch_data, des_lands_du9)),
+  tar_target(du9_ch_pa, intersect_pa(ch_data, pa_du9)),
+  tar_target(du9_cdc, intersect_pa(cdc_load, du9)),
+  tar_target(du9_cdc_pa, intersect_pa(cdc_load, pa_du9)),
+  tar_target(du9_ch_flat, intersect_pa(ch_flat, du9)),
+  tar_target(du9_ch_flat_pa, intersect_pa(ch_flat, pa_du9)),
+
+  tar_target(du9_cef, intersect_pa(cef_data, du9)),
+  tar_target(du9_tfl, intersect_pa(cef_data, tfl_area)),
+  tar_target(du9_tsa, intersect_pa(cef_data, tsa_area)),
+
+  tar_target(priority_du9_tfl, intersect_pa(priority_og_du9, tfl_area)),
+  tar_target(priority_du9_tfl_pa, intersect_pa(priority_og_pa_du9, tfl_area)),
+  tar_target(priority_du9_tsa, intersect_pa(priority_og_du9, tsa_area)),
+  tar_target(priority_du9_tsa_pa, intersect_pa(priority_og_pa_du9, tsa_area)),
+
+
+  tar_target(og_5_du9_tfl, intersect_pa(og_5_du9, tfl_area)),
+  tar_target(og_5_du9_tfl_pa, intersect_pa(og_5_pa_du9, tfl_area)),
+  tar_target(og_5_du9_tsa, intersect_pa(og_5_du9, tsa_area)),
+  tar_target(og_5_du9_tsa_pa, intersect_pa(og_5_pa_du9, tsa_area))
+)
+
+
+# WMA Analysis ------------------------------------------------------------
+
+
+
+wma_analysis <- list(
+  tar_target(wma_og, intersect_pa(th_wma_data, og_data)),
+  tar_target(wma_ch, intersect_pa(th_wma_data, ch_data)),
+  tar_target(wma_des, intersect_pa(th_wma_data, des_lands)),
+  tar_target(wma_lup, intersect_pa(th_wma_data, lup_data))
+
 )
 
 
@@ -328,7 +369,6 @@ process_data <- list(
   #tar_target(og_parks_removed, remove_pa(og_data, pa_tech)),
   tar_target(carbon_interior,carbon_analysis_interior(bec_og, bec_pa_og)),
   tar_target(carbon_coast, carbon_analysis_coastal(bec_og, bec_pa_og))
-
 )
 
 
@@ -348,7 +388,8 @@ list(
   #round_3_analyses,
   #site_based_analyses,
   #site_based_analyses_incomp,
-  site_based_analysis_du9
+  #site_based_analysis_du9
+  wma_analysis
   #process_data
   #summarize_data
   #analyze_data,
