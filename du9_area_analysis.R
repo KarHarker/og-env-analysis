@@ -821,8 +821,10 @@ priority_pa_du9_tfl_recovery <- priority_du9_tfl_pa %>%
          og_pa_area = as.numeric(set_units(og_pa_area, ha))) %>%
   st_drop_geometry() %>%
   filter(herd %in% priority_herds) %>%
-  group_by(herd, critical_habitat_type, priority_zone_type,  FOREST_FILE_ID,
-           LICENCEE) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type) %>%
+  mutate(File_Name = paste0(unique(FOREST_FILE_ID), collapse = ", ")) %>%
+  mutate(Licencee_Name = paste0(unique(LICENCEE), collapse = ", ")) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type, File_Name, Licencee_Name) %>%
   summarise(og_priority_area_pa_by_tfl = sum(og_pa_area))
 
 #priority og in area
@@ -831,11 +833,13 @@ priority_du9_tfl_recovery <- priority_du9_tfl %>%
          og_area = as.numeric(set_units(og_area, ha))) %>%
   st_drop_geometry() %>%
   filter(herd %in% priority_herds) %>%
-  group_by(herd, critical_habitat_type, priority_zone_type, FOREST_FILE_ID,
-           LICENCEE) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type) %>%
+  mutate(File_Name = paste0(unique(FOREST_FILE_ID), collapse = ", ")) %>%
+  mutate(Licencee_Name = paste0(unique(LICENCEE), collapse = ", ")) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type, File_Name, Licencee_Name) %>%
   summarise(og_priority_area_by_tfl = sum(og_area)) %>%
   left_join(priority_pa_du9_tfl_recovery, by = c('herd','critical_habitat_type', 'priority_zone_type',
-                                                 'FOREST_FILE_ID', 'LICENCEE')) %>%
+                                                 'File_Name', 'Licencee_Name')) %>%
   mutate(across(where(is.numeric), ~replace_na(.x, 0))) %>%
   mutate(across(where(is.numeric), ~round(.x, digits=1))) %>%
   mutate(og_unprotected_tfl = og_priority_area_by_tfl - og_priority_area_pa_by_tfl)
@@ -852,8 +856,10 @@ priority_pa_du9_tfl <- priority_du9_tfl_pa %>%
          og_pa_area = as.numeric(set_units(og_pa_area, ha))) %>%
   st_drop_geometry() %>%
   #filter(herd %in% priority_herds) %>%
-  group_by(herd, critical_habitat_type, priority_zone_type, FOREST_FILE_ID,
-           LICENCEE) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type) %>%
+  mutate(File_Name = paste0(unique(FOREST_FILE_ID), collapse = ", ")) %>%
+  mutate(Licencee_Name = paste0(unique(LICENCEE), collapse = ", ")) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type, File_Name, Licencee_Name) %>%
   summarise(og_priority_area_pa_by_tfl = sum(og_pa_area))
 
 #priority og in area
@@ -862,16 +868,18 @@ priority_du9_tfl_all <- priority_du9_tfl %>%
          og_area = as.numeric(set_units(og_area, ha))) %>%
   st_drop_geometry() %>%
   #filter(herd %in% priority_herds) %>%
-  group_by(herd, critical_habitat_type, priority_zone_type, FOREST_FILE_ID,
-           LICENCEE) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type) %>%
+  mutate(File_Name = paste0(unique(FOREST_FILE_ID), collapse = ", ")) %>%
+  mutate(Licencee_Name = paste0(unique(LICENCEE), collapse = ", ")) %>%
+  group_by(herd, critical_habitat_type, priority_zone_type, File_Name, Licencee_Name) %>%
   summarise(og_priority_area_by_tfl = sum(og_area)) %>%
   left_join(priority_pa_du9_tfl, by = c('herd','critical_habitat_type', 'priority_zone_type',
-                                                 'FOREST_FILE_ID', 'LICENCEE')) %>%
+                                                 'File_Name', 'Licencee_Name')) %>%
   mutate(across(where(is.numeric), ~replace_na(.x, 0))) %>%
   mutate(across(where(is.numeric), ~round(.x, digits=1))) %>%
   mutate(og_unprotected_tfl = og_priority_area_by_tfl - og_priority_area_pa_by_tfl)
 
-write_csv(priority_du9_tfl, 'out/du9/du9-priority-og_habitat-type_all-herds_by-tfl.csv')
+write_csv(priority_du9_tfl_all, 'out/du9/du9-priority-og_habitat-type_all-herds_by-tfl.csv')
 
 high_priority_all <- priority_du9_tfl %>%
   filter(priority_zone_type == "High")
@@ -945,7 +953,7 @@ priority_du9_tsa_all <- priority_du9_tsa %>%
   mutate(across(where(is.numeric), ~round(.x, digits=1))) %>%
   mutate(og_unprotected_tsa = og_priority_area_by_tsa - og_priority_area_pa_by_tsa)
 
-write_csv(priority_du9_tsa, 'out/du9/du9-priority-og_habitat-type_all-herds_by-tsa.csv')
+write_csv(priority_du9_tsa_all, 'out/du9/du9-priority-og_habitat-type_all-herds_by-tsa-and-tfl.csv')
 
 high_priority_tsa_all <- priority_du9_tsa %>%
   filter(priority_zone_type == "High")
